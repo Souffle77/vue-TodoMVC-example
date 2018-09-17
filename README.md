@@ -1,5 +1,6 @@
 ### Vue.js TodoList(TodoMVC) Example
 <hr>
+
 > 樣板工具： vue-cli
 > 套件：webpack
 
@@ -7,6 +8,7 @@
 
 #### 實作
 <hr>
+
 - 套用Vue.js TodoMVC Example的css
 - 實現Vue.js TodoMVC Example的功能
 
@@ -19,7 +21,8 @@
 
 #### 參考網站
 <hr>
-[Vue.js to-do-list Example(1): 環境建置與指令簡介](http://souffle77-blog.logdown.com/posts/7810584-vuejs-to-do-list-example-vuejs-todomvc-example)
+
+[Vue.js to-do-list Example(1):環境建置與指令簡介](http://souffle77-blog.logdown.com/posts/7810584-vuejs-to-do-list-example-vuejs-todomvc-example)
 
 [Vue.js to-do-list Example(2):實作](http://souffle77-blog.logdown.com/posts/7810707-vuejs-to-do-list-example-2-implementation-vuejs-todomvc-example)
 
