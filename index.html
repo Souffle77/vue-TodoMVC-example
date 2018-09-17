@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>TodoMVC</title>
+	</head>
+	<body>
+		<section class="todoapp">
+			<!-- header -->
+			<header class="header">
+				<h1>{{title}}</h1>
+				<input class="new-todo" placeholder="What needs to be done?" autofocus v-model.trim="newTodo" @keyup.enter="addTodo">
+				<!-- .trim : 去空格 ｜ @keyup.enter：-->
+			</header>
+			<!-- main -->
+			<section class="main" v-show="todos.length" v-cloak>
+				<input id="toggle-all" class="toggle-all" type="checkbox" v-model="allDone">
+				<label for="toggle-all">Mark all as complete</label>
+				<ul class="todo-list">
+					<li v-for="(todo,index) in filteredTodos" :class="{completed:todo.completed, 
+					editing:todo == editedTodo}"> 
+						<!-- todos是陣列，todo是當前陣列的那一項 -->
+						<!-- index: 這裡是為了刪除功能而增加的參數 -->
+						<!-- :class : 綁定的樣式
+						{complete:todo.completed}意思是： todo.completed 為 true時，才顯示complete的樣式，反之為否-->
+						<!-- editing:todo == editedTodo 意思是：如果todo 是當前編輯的這個(editedTodo) 那就套用editing樣式 -->
+						<div class="view">
+							<input class="toggle" type="checkbox" v-model="todo.completed">
+							<label @dblclick="editTodo(todo)">{{todo.content}}</label>
+							<!-- @dblclick：對當前內容綁定雙擊事件 -->
+							<!-- 要渲染的是內容＝todo裡面的content -->
+							<button class="destroy" @click="removeTodo(index)"></button>
+							<!-- 對應到上面的v-for="(todo,index) in filteredTodos"裡的index -->
+						</div>
+						<input class="edit" type="text" v-model.trim="todo.content" v-focus="todo == editedTodo" @blur="doneEdit(todo,index)" @keyup.esc="cancelEdit(todo)" @keyup.enter="doneEdit(todo)">
+					</li>
+				</ul>
+			</section>
+			<!-- footer -->
+			<footer class="footer" v-show="todos.length">
+				<!-- v-show: 相當於display:none。架構還存在，只是頁面上不顯示。v-if: 到節點裡新增/刪除。如果不符合就完全不會存在於在架構裡。
+					要如何用v-show來做？利用陣列的長度判斷，如果有就顯示，沒有就不顯示 -->
+				<span class="todo-count"><strong>{{remain}}</strong> {{todos.length > 1?'items':'item'}} left</span>
+				<!-- 這裡使用javascript三元運算子。如果todos長度大於1就顯示items，如果是1則顯示item -->
+				<ul class="filters">
+					<li>
+						<a href="#/" :class="{selected:visibility=='all'}">All</a>
+					</li>
+					<li>
+						<a href="#/active" :class="{selected:visibility=='active'}">Active</a>
+					</li>
+					<li>
+						<a href="#/completed" :class="{selected:visibility=='completed'}">Completed</a>
+					</li>
+				</ul>
+				<!-- Hidden if no completed items are left ↓ -->
+				<button class="clear-completed" @click="removeCompleted" v-show="todos.length">Clear completed</button>
+			</footer>
+
+		</section>
+		<footer class="info">
+			<p>Double-click to edit a todo</p>
+		</footer>
+	</body>
+</html>
