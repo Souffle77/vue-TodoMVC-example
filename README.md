@@ -1,8 +1,8 @@
 ### Vue.js TodoList(TodoMVC) Example
 <hr>
 
-> 樣板工具： vue-cli
-> 套件：webpack
+- 樣板工具： vue-cli
+- 套件：webpack
 
 <img src="src/assets/todoMVC.png" alt="todoMVC example">	
 
@@ -15,6 +15,8 @@
 ##### 撰寫方式是比官網容易理解！
 
 #### 檔案
+<hr>
+
 - index.html
 - src/main.js 
 只有撰寫這兩個檔案!
